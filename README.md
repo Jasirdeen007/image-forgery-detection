@@ -211,3 +211,8 @@ SIDTD is a synthetic dataset of ID and travel documents generated from MIDV-2020
 Download the fine-tuned EfficientNet-B3 checkpoint from Hugging Face:
 
 [Download `efficientnet_b3_finetuned.pt`](https://huggingface.co/Jasirdeen/efficientnet-b3-image-forgery-detection/resolve/main/efficientnet_b3_finetuned.pt)
+
+Place the downloaded file here:
+
+```text
+artifacts/efficientnet_b3_finetuned.pt
