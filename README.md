@@ -205,3 +205,9 @@ These results are dataset-specific and should not be treated as production perfo
 ## Dataset reference
 
 SIDTD is a synthetic dataset of ID and travel documents generated from MIDV-2020 for identity-document verification research. See the [SIDTD project](https://github.com/Oriolrt/SIDTD_Dataset) and dataset documentation before redistributing data.
+
+## Pretrained model
+
+Download the fine-tuned EfficientNet-B3 checkpoint from Hugging Face:
+
+[Download `efficientnet_b3_finetuned.pt`](https://huggingface.co/Jasirdeen/efficientnet-b3-image-forgery-detection/resolve/main/efficientnet_b3_finetuned.pt)
