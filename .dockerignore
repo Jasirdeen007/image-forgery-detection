@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.git/
+.gitignore
+.venv/
+env/
+venv/
+data/
+SIDTD/
+templates.zip
+artifacts/
+*.pt
+*.onnx
+*.zip
+artifacts/error_analysis/

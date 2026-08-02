@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explainable identity document forgery detection" />
+    <title>Document Verify</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div class="eyebrow"><span class="status-dot"></span> SIDTD verification demo</div>
+        <h1>Check a document’s authenticity.</h1>
+        <p class="hero-copy">Upload a document image to receive a genuine or forged prediction with a visual explanation of the model’s attention.</p>
+      </header>
+
+      <section class="workspace" aria-label="Document verification">
+        <div class="upload-card">
+          <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Choose a document image">
+            <div class="upload-icon">↑</div>
+            <h2>Drop an image here</h2>
+            <p>or choose a JPEG, PNG, WebP, or BMP file</p>
+            <label class="file-button" for="file-input">Choose image</label>
+            <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/bmp" hidden />
+          </div>
+          <div id="file-name" class="file-name" aria-live="polite">No image selected</div>
+          <button id="verify-button" class="verify-button" disabled>Verify document</button>
+          <p class="privacy-note">Images are processed by the local verification API and are not stored by the UI.</p>
+        </div>
+
+        <div class="preview-card">
+          <div class="card-heading"><span>Input preview</span><span id="image-dimensions" class="muted"></span></div>
+          <div id="preview-empty" class="preview-empty">Your selected document will appear here.</div>
+          <img id="preview-image" class="preview-image hidden" alt="Selected document preview" />
+        </div>
+      </section>
+
+      <section id="loading-card" class="message-card hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <div><strong>Analyzing document</strong><p>Running the fine-tuned EfficientNet-B3 model and Grad-CAM.</p></div>
+      </section>
+
+      <section id="error-card" class="message-card error-card hidden" role="alert"></section>
+
+      <section id="result-card" class="result-card hidden" aria-live="polite">
+        <div class="result-header">
+          <div>
+            <div class="eyebrow">Verification result</div>
+            <h2 id="result-label">—</h2>
+          </div>
+          <div id="result-confidence" class="confidence">—</div>
+        </div>
+        <div class="probabilities">
+          <div class="probability-row"><span>Genuine</span><strong id="genuine-value">—</strong></div>
+          <div class="bar"><span id="genuine-bar"></span></div>
+          <div class="probability-row"><span>Forged</span><strong id="forged-value">—</strong></div>
+          <div class="bar forged-bar"><span id="forged-bar"></span></div>
+        </div>
+        <div class="result-grid">
+          <div class="heatmap-panel">
+            <div class="card-heading"><span>Model attention</span><span class="muted">Grad-CAM</span></div>
+            <img id="heatmap-image" class="heatmap-image" alt="Grad-CAM model attention heatmap" />
+          </div>
+          <div class="explanation-panel">
+            <div class="card-heading"><span>What this means</span></div>
+            <p id="result-explanation"></p>
+            <div class="metadata"><span>Device</span><strong id="result-device">—</strong><span>Threshold</span><strong id="result-threshold">—</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>Prototype for synthetic SIDTD identity-document images · Results support review, not a final identity decision.</footer>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
